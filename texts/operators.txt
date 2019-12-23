@@ -1,0 +1,62 @@
+Add
+Amend
+Apply
+Index
+Trap
+Cast
+Coalesce
+Compose
+Cond
+Cut
+Deal
+Roll
+Permute
+Delete
+Display
+Dict
+Divide
+Display
+Dynamic Load
+Drop
+Enkey
+Unkey
+Enumerate
+Enumeration
+Enum Extend
+Equal
+Exec
+File Binary
+File Text
+Fill
+Find
+Flip Splayed
+Greater
+Greater Than
+Identity
+Null
+Join
+Less Than
+Lesser
+Match
+Matrix Multiply
+Multiply
+Not Equal
+Pad
+Select
+Set Attribute
+Simple Exec
+Signal
+Subtract
+Take
+Tok
+Update
+Vector Conditional
+Over
+Scan
+Each Right
+Each Left
+Each
+Each Parallel
+Each Prior
+Case
+Compose

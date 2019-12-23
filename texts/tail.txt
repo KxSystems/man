@@ -1,0 +1,22 @@
+man:{[x]
+  str:("j"$0>type x)enlist/x;                       / list
+  if[10<>type str;'`type];                          / string?
+  str:("j"$not first[x]in"\\-")lower/str;           / syscmds and cmd-line options case sensitive
+  url:.man.ROOT,{$[count x;x;.man.HELP]}.man.d str; / URL
+  system"open ",url;                                / display in browser
+  url }
+\
+
+Usage examples:
+
+man "$"               / operator glyph
+man "enum extend"     / operator by name
+man "read0"           / keyword
+man ".z"              / namespace
+man "-b"              / command-line option
+man "\\b"             / system command
+man "errors"          / error list
+man "datatypes"       / datatypes
+man "help"            / help
+man "internal"        / internal functions
+

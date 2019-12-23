@@ -1,0 +1,33 @@
+\,abort
+\a,tables
+\b,views
+\B,pending views
+\c,console size
+\c,change directory
+\C,HTTP size
+\d,directory
+\e,error trap clients
+\f,functions
+\g,garbage collection mode
+\l,load file or directory
+\o,offset from UTC
+\p,listening port
+\P,precision
+\r,replication master
+\r,rename
+\s,number of slaves
+\S,random seed
+\t,timer
+\T,timeout
+\t,time and space
+\u,reload user password file
+\v,variables
+\w,workspace
+\W,week offset
+\x,expunge
+\z,date parsing
+\1 & \2,redirect
+\_,hide q code
+\,terminate
+\,toggle q/k
+\\,quit
