@@ -1,6 +1,5 @@
 cmb:{x where 1b,1_(or)prior" "<>x}      / collapse multiple blanks
 d4s:{@[x;where" "=x;:;"-"]}             / dash for space
-tf:{read0`$":texts/",x,".txt"}          / text from
 
 HELP:"about/man/"                       / man "help"
 ROOT:"https://code.kx.com/q/"           / documentation site

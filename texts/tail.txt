@@ -10,13 +10,22 @@ man:{[x]
 Usage examples:
 
 man "$"               / operator glyph
-man "enum extend"     / operator by name
+man "enum extend"     / operator name
 man "read0"           / keyword
 man ".z"              / namespace
 man "-b"              / command-line option
 man "\\b"             / system command
-man "errors"          / error list
-man "datatypes"       / datatypes
-man "help"            / help
-man "internal"        / internal functions
 
+Special pages:
+
+man "cmdline"         / command-line options
+man "errors"
+man "datatypes"
+man "debug"
+man "help"
+man "interfaces"
+man "internal"
+man "iterators"
+man "kb"              / Knowledge Base
+man "syscmds"         / system commands
+man "wp"              / White Papers

@@ -1,10 +1,9 @@
-/ man.q 2019.12.23
+/ man.q 2019.12.27
 
 \d .man
 
 cmb:{x where 1b,1_(or)prior" "<>x}      / collapse multiple blanks
 d4s:{@[x;where" "=x;:;"-"]}             / dash for space
-tf:{read0`$":texts/",x,".txt"}          / text from
 
 HELP:"about/man/"                       / man "help"
 ROOT:"https://code.kx.com/q/"           / documentation site
@@ -32,8 +31,8 @@ d,:{x!"ref/",/:y}. flip" "vs/:cmb each
   ">=  less-than";
   ">=  greater-than";
   "<=  greater-than";
-  "&   greater";
-  "|   lesser";
+  "&   lesser";
+  "|   greater";
   "~   match";
   "^   fill";
   ",   join";
@@ -175,7 +174,19 @@ niq:("**";csv)0:
 d,:first[niq]!"basics/syscmds/#",/:{d4s cmb trim except[;"\\&/"]x}each lower" "sv/:flip niq
 
 /special pages
-d,:{x!"basics/",/:x,'"/"}tf"special"
+d,:(!). flip{" "vs cmb trim x}each
+  ("adverbs    ref/iterators";
+  "cmdline    basics/cmdline";
+  "errors     basics/errors/";
+  "datatypes  basics/datatypes";
+  "debug      basics/debug";
+  "help       about/man";
+  "internal   basics/internal";
+  "interfaces interfaces";
+  "iterators  ref/iterators";
+  "kb         kb";
+  "syscmds    basics/syscmds";
+  "wp         wp")
 
 \d .
 
@@ -191,13 +202,22 @@ man:{[x]
 Usage examples:
 
 man "$"               / operator glyph
-man "enum extend"     / operator by name
+man "enum extend"     / operator name
 man "read0"           / keyword
 man ".z"              / namespace
 man "-b"              / command-line option
 man "\\b"             / system command
-man "errors"          / error list
-man "datatypes"       / datatypes
-man "help"            / help
-man "internal"        / internal functions
 
+Special pages:
+
+man "cmdline"         / command-line options
+man "errors"
+man "datatypes"
+man "debug"
+man "help"
+man "interfaces"
+man "internal"
+man "iterators"
+man "kb"              / Knowledge Base
+man "syscmds"         / system commands
+man "wp"              / White Papers

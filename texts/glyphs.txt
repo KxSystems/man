@@ -19,8 +19,8 @@ _   overloads/#underscore
 >=  less-than
 >=  greater-than
 <=  greater-than
-&   greater
-|   lesser
+&   lesser
+|   greater
 ~   match
 ^   fill
 ,   join

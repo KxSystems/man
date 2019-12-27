@@ -1,6 +1,12 @@
+adverbs    ref/iterators
+cmdline    basics/cmdline
 errors     basics/errors/
 datatypes  basics/datatypes
+debug      basics/debug
+help       about/man
 internal   basics/internal
 interfaces interfaces
+iterators  ref/iterators
 kb         kb
+syscmds    basics/syscmds
 wp         wp

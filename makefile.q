@@ -1,7 +1,7 @@
 /
 title: makefile for man.q
 author: stephen@kx.com
-date: 2019.12.23
+date: 2019.12.27
 \
 
 tf:{read0`$":texts/",x,".txt"}			/ text from
@@ -46,7 +46,8 @@ s,:enlist"d,:first[niq]!\"basics/syscmds/#\",/:{d4s cmb trim except[;\"\\\\&/\"]
 
 / special pages
 s,:("";"/special pages")
-s,:"d,:{x!\"basics/\",/:x,'\"/\"}tf\"special\""
+s,:enlist"d,:(!). flip{\" \"vs cmb trim x}each"
+s,:s2l tf"special"
 
 s,:("";"\\d .";"")
 
