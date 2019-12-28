@@ -1,4 +1,4 @@
-/ man.q 2019.12.27
+/ man.q 2019.12.28
 
 \d .man
 
@@ -105,7 +105,7 @@ d,:{x!"ref/",/:d4s'[x],\:"/"}lower
   "Compose")
 
 /reserved words
-d,:{x!"ref/",/:x}string .Q.res
+d,:{x!"ref/",/:x}string asc key[`.q]except`ww
 
 /namespaces
 d,:(lower string`.h`.j`.Q`.z)!"ref/dot",/:"hjqz"
@@ -191,11 +191,17 @@ d,:(!). flip{" "vs cmb trim x}each
 \d .
 
 man:{[x]
-  str:("j"$0>type x)enlist/x;                       / list
-  if[10<>type str;'`type];                          / string?
-  str:("j"$not first[x]in"\\-")lower/str;           / syscmds and cmd-line options case sensitive
-  url:.man.ROOT,{$[count x;x;.man.HELP]}.man.d str; / URL
-  system"open ",url;                                / display in browser
+  if[10<>type str:(),x;'`type];                                 / string?
+  if[trim[str]~"--list";                                        / --list option
+    m:{(1+max count each x)$'x}key .man.d;                      /   keys
+    f:(system"c")[1] div count first m;                         /   fold
+    1 raze(raze each f cut m),'"\n";                            /   list
+    :""];
+  / syscmds and cmd-line options case sensitive
+  str:("j"$not first[x]in"\\-")lower/str;                       
+  url:.man.ROOT,{$[count x;x;.man.HELP]}.man.d str;             / URL
+  cmd:"mwl"!("open";"start";"xdg-open");                        / OS command
+  system(cmd first string .z.o)," ",url;                        / in browser
   url }
 \
 
@@ -221,3 +227,7 @@ man "iterators"
 man "kb"              / Knowledge Base
 man "syscmds"         / system commands
 man "wp"              / White Papers
+
+All arguments:
+
+man "--list"
