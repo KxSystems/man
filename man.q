@@ -1,4 +1,4 @@
-/ man.q 2019.12.28
+/ man.q 2019.12.29
 
 \d .man
 
@@ -200,7 +200,7 @@ man:{[x]
   / syscmds and cmd-line options case sensitive
   str:("j"$not first[x]in"\\-")lower/str;                       
   url:.man.ROOT,{$[count x;x;.man.HELP]}.man.d str;             / URL
-  cmd:"mwl"!("open";"start";"xdg-open");                        / OS command
+  cmd:"mwlsv"!("open";"start";"xdg-open")where 1 1 3;           / OS command
   system(cmd first string .z.o)," ",url;                        / in browser
   url }
 \
@@ -213,6 +213,7 @@ man "read0"           / keyword
 man ".z"              / namespace
 man "-b"              / command-line option
 man "\\b"             / system command
+man ""                / reference card
 
 Special pages:
 
@@ -228,6 +229,6 @@ man "kb"              / Knowledge Base
 man "syscmds"         / system commands
 man "wp"              / White Papers
 
-All arguments:
+All arguments to man:
 
 man "--list"
