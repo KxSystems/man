@@ -1,7 +1,7 @@
 /
 title: makefile for man.q
 author: stephen@kx.com
-date: 2019.12.28
+date: 2019.12.29
 \
 
 tf:{read0`$":texts/",x,".txt"}			/ text from
@@ -27,7 +27,7 @@ s,:s2l tf"operators"
 
 / reserved words
 s,:("";"/reserved words")
-s,:enlist"d,:{x!\"ref/\",/:x}string asc key[`.q]except`ww"
+s,:enlist"d,:{x!\"ref/\",/:x}string asc .Q.res,key[`.q]except`ww"
 
 / namespaces
 s,:("";"/namespaces")

@@ -105,7 +105,7 @@ d,:{x!"ref/",/:d4s'[x],\:"/"}lower
   "Compose")
 
 /reserved words
-d,:{x!"ref/",/:x}string asc key[`.q]except`ww
+d,:{x!"ref/",/:x}string asc .Q.res,key[`.q]except`ww
 
 /namespaces
 d,:(lower string`.h`.j`.Q`.z)!"ref/dot",/:"hjqz"
