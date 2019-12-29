@@ -17,7 +17,7 @@ s,:tf"head"
 
 / operators by glyph
 s,:("";"/operators by glyph")
-s,:enlist"d,:{x!\"ref/\",/:y}. flip\" \"vs/:cmb each"
+s,:enlist"d,:.[!;]flip\" \"vs/:cmb each"
 s,:s2l tf"glyphs"
 
 / operators by name

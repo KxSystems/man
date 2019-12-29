@@ -1,5 +1,7 @@
 cmb:{x where 1b,1_(or)prior" "<>x}      / collapse multiple blanks
 d4s:{@[x;where" "=x;:;"-"]}             / dash for space
 
-HELP:"about/man/"                       / man "help"
+GS:"https://google.com/search?q=site%3acode.kx.com+"  / Google Search
 ROOT:"https://code.kx.com/q/"           / documentation site
+
+

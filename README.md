@@ -30,18 +30,20 @@ Usage
 
 ### Special pages
     man "cmdline"         / command-line options
+    man "error"
     man "errors"
     man "datatypes"
     man "debug"
-    man "help"
     man "interfaces"
     man "internal"
     man "iterators"
+    man "joins"
     man "kb"              / Knowledge Base
     man "syscmds"         / system commands
     man "wp"              / White Papers
 
 ### All arguments
+    man "--help"
     man "--list"
 
 

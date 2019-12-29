@@ -5,39 +5,49 @@
 cmb:{x where 1b,1_(or)prior" "<>x}      / collapse multiple blanks
 d4s:{@[x;where" "=x;:;"-"]}             / dash for space
 
-HELP:"about/man/"                       / man "help"
+GS:"https://google.com/search?q=site%3acode.kx.com+"  / Google Search
 ROOT:"https://code.kx.com/q/"           / documentation site
 
+
+
 /operators by glyph
-d,:{x!"ref/",/:y}. flip" "vs/:cmb each
-  ("@   overloads/#at";
-  "\\   overloads/#backslash";
-  "#   overloads/#hash";
-  ".   overloads/#dot";
-  "$   overloads/#dollar";
-  "!   overloads/#bang";
-  "?   overloads/#query";
-  "'   overloads/#quote";
-  "':  overloads/#quotecolon";
-  "/   overloads/#slash";
-  "_   overloads/#underscore";
-  "+   add";
-  "-   subtract";
-  "*   multiply";
-  "%   divide";
-  "=   equal";
-  "<>  not-equal";
-  "<   less-than";
-  ">=  less-than";
-  ">=  greater-than";
-  "<=  greater-than";
-  "&   lesser";
-  "|   greater";
-  "~   match";
-  "^   fill";
-  ",   join";
-  "/:  maps/#each-left-and-each-right";
-  "\\:  maps/#each-left-and-each-right")
+d,:.[!;]flip" "vs/:cmb each
+  ("@   ref/overloads/#at";
+  "\\   ref/overloads/#backslash";
+  "#   ref/overloads/#hash";
+  ".   ref/overloads/#dot";
+  "$   ref/overloads/#dollar";
+  "!   ref/overloads/#bang";
+  "?   ref/overloads/#query";
+  "'   ref/overloads/#quote";
+  "':  ref/overloads/#quotecolon";
+  "/   ref/overloads/#slash";
+  "_   ref/overloads/#underscore";
+  "+   ref/add";
+  "-   ref/subtract";
+  "*   ref/multiply";
+  "%   ref/divide";
+  "=   ref/equal";
+  "<>  ref/not-equal";
+  "<   ref/less-than";
+  ">=  ref/less-than";
+  ">=  ref/greater-than";
+  "<=  ref/greater-than";
+  "&   ref/lesser";
+  "|   ref/greater";
+  "~   ref/match";
+  "^   ref/fill";
+  ",   ref/join";
+  "/:  ref/maps/#each-left-and-each-right";
+  "\\:  ref/maps/#each-left-and-each-right";
+  "0   basics/files";
+  "1   basics/files";
+  "2   basics/files";
+  "0:  ref/file-text";
+  "1:  ref/file-binary";
+  "2:  ref/dynamic-load";
+  ":   basics/syntax/#colon";
+  "::  ref/identity")
 
 /operators by name
 d,:{x!"ref/",/:d4s'[x],\:"/"}lower
@@ -177,13 +187,15 @@ d,:first[niq]!"basics/syscmds/#",/:{d4s cmb trim except[;"\\&/"]x}each lower" "s
 d,:(!). flip{" "vs cmb trim x}each
   ("adverbs    ref/iterators";
   "cmdline    basics/cmdline";
+  "error      basics/errors/";
   "errors     basics/errors/";
   "datatypes  basics/datatypes";
   "debug      basics/debug";
-  "help       about/man";
+  "--help     about/man";
   "internal   basics/internal";
   "interfaces interfaces";
   "iterators  ref/iterators";
+  "joins      basics/joins";
   "kb         kb";
   "syscmds    basics/syscmds";
   "wp         wp")
@@ -198,8 +210,8 @@ man:{[x]
     1 raze(raze each f cut m),'"\n";                            /   list
     :""];
   / syscmds and cmd-line options case sensitive
-  str:("j"$not first[x]in"\\-")lower/str;                       
-  url:.man.ROOT,{$[count x;x;.man.HELP]}.man.d str;             / URL
+  str:("j"$not first[x]in"\\-")lower/str;
+  url:{$[count u:.man.d x;.man.ROOT,u;.man.GS,x]}str;             / URL
   cmd:"mwlsv"!("open";"start";"xdg-open")where 1 1 3;           / OS command
   system(cmd first string .z.o)," ",url;                        / in browser
   url }
@@ -221,7 +233,6 @@ man "cmdline"         / command-line options
 man "errors"
 man "datatypes"
 man "debug"
-man "help"
 man "interfaces"
 man "internal"
 man "iterators"
@@ -231,4 +242,5 @@ man "wp"              / White Papers
 
 All arguments to man:
 
+man "--help"
 man "--list"

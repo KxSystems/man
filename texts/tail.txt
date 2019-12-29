@@ -6,8 +6,8 @@ man:{[x]
     1 raze(raze each f cut m),'"\n";                            /   list
     :""];
   / syscmds and cmd-line options case sensitive
-  str:("j"$not first[x]in"\\-")lower/str;                       
-  url:.man.ROOT,{$[count x;x;.man.HELP]}.man.d str;             / URL
+  str:("j"$not first[x]in"\\-")lower/str;
+  url:{$[count u:.man.d x;.man.ROOT,u;.man.GS,x]}str;             / URL
   cmd:"mwlsv"!("open";"start";"xdg-open")where 1 1 3;           / OS command
   system(cmd first string .z.o)," ",url;                        / in browser
   url }
@@ -29,7 +29,6 @@ man "cmdline"         / command-line options
 man "errors"
 man "datatypes"
 man "debug"
-man "help"
 man "interfaces"
 man "internal"
 man "iterators"
@@ -39,4 +38,5 @@ man "wp"              / White Papers
 
 All arguments to man:
 
+man "--help"
 man "--list"
