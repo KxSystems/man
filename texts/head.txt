@@ -1,7 +1,62 @@
-cmb:{x where 1b,1_(or)prior" "<>x}      / collapse multiple blanks
-d4s:{@[x;where" "=x;:;"-"]}             / dash for space
+/ constants 
+.man.GS:"https://google.com/search?q=site:code.kx.com+"     / Google Search
+.man.ROOT:"https://code.kx.com/q/"                          / documentation site
 
-GS:"https://google.com/search?q=site%3acode.kx.com+"  / Google Search
-ROOT:"https://code.kx.com/q/"           / documentation site
+.man.cmb:{x where 1b,1_(or)prior" "<>x}                     / collapse multiple blanks
+.man.d4s:{@[x;where" "=x;:;"-"]}                            / dash for space
+.man.dc:{[u;s]{y[0]!x,/:y 1}[u,"/#";]("**";csv)0:s}         / dict from CSV 
+.man.rc:{(x,y,z)(y,x,z)?z}[.Q.A;.Q.a;]                      / reverse case
+.man.TEST:0b                                                / test flag
 
+.man.man:{[x]
+  if[10<>type str:(),x;'`type];                             / string?
+  if[trim[str]~"--list";                                    / --list option
+    m:{(1+max count each x)$'x}key .man.d;                  /   keys
+    f:(system"c")[1] div count first m;                     /   fold
+    1 raze(raze each f cut m),'"\n";                        /   list
+    :""];
+  cs:".\\-";                                                / ns, cmd, cmd-line
+  str:$[first[str]in cs;str;lower str];                     / case sensitive?
+  rtf:(.man.d lower 2#;.man.d .man.rc;0#);                  / retry fns
+  retry:(rtf where 1 2 1)cs?first str;                      / retry fn
+  url:$[count u:.man.d str; .man.ROOT,u;                    / OK
+        count u:retry str;  .man.ROOT,u;                    /   retry
+                            .man.GS,str ];                  /   Google
+  cmd:"mwlsv"!("open";"start";"xdg-open")where 1 1 3;       / OS command
+  if[not .man.TEST;system(cmd first string .z.o)," ",url];  / in browser
+  url }
 
+.man.cases:(
+  ("$"           ; "ref/overloads/#dollar");
+  ("Enum Extend" ; "ref/enum-extend/");
+  ("read0"       ; "ref/read0");
+  (".Q"          ; "ref/dotq");
+  (".Q.bt"       ; "ref/dotq/#qbt-backtrace");
+  (".h.br"       ; "ref/doth/#hbr-linebreak");
+  (".j.j"        ; "ref/dotj/#jj-serialize");
+  (".z.u"        ; "ref/dotz/#zu-user-id");
+  (".z.T"        ; "ref/dotz/#zt-zt-zd-zd-timedate-shortcuts");
+  (".z.Z"        ; "ref/dotz/#zz-local-datetime");
+  ("-C"          ; "basics/cmdline/#-c-http-size");
+  ("\\b"         ; "basics/syscmds/#b-views");
+  (""            ; "ref/");
+  ("cmdline"     ; "basics/cmdline");
+  ("error"       ; "basics/errors/");
+  ("errors"      ; "basics/errors/");
+  ("datatypes"   ; "basics/datatypes");
+  ("debug"       ; "basics/debug");
+  ("interfaces"  ; "interfaces");
+  ("internal"    ; "basics/internal");
+  ("iterators"   ; "ref/iterators");
+  ("kb"          ; "kb");
+  ("syscmds"     ; "basics/syscmds");
+  ("wp"          ; "wp");
+  ("--help"      ; "about/man") )
+
+.man.testall:{
+  .man.TEST:1b;                                             / no browser call
+  ok:.'[{(.man.ROOT,y)~man x};.man.cases;0];                / results
+  .man.TEST:0b;
+  $[all ok; `ok; .man.cases[where not ok;0],`fail] }
+
+man:.man.man

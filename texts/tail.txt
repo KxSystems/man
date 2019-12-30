@@ -1,16 +1,3 @@
-man:{[x]
-  if[10<>type str:(),x;'`type];                                 / string?
-  if[trim[str]~"--list";                                        / --list option
-    m:{(1+max count each x)$'x}key .man.d;                      /   keys
-    f:(system"c")[1] div count first m;                         /   fold
-    1 raze(raze each f cut m),'"\n";                            /   list
-    :""];
-  / syscmds and cmd-line options case sensitive
-  str:("j"$not first[x]in"\\-")lower/str;
-  url:{$[count u:.man.d x;.man.ROOT,u;.man.GS,x]}str;             / URL
-  cmd:"mwlsv"!("open";"start";"xdg-open")where 1 1 3;           / OS command
-  system(cmd first string .z.o)," ",url;                        / in browser
-  url }
 \
 
 Usage examples:
@@ -18,8 +5,9 @@ Usage examples:
 man "$"               / operator glyph
 man "enum extend"     / operator name
 man "read0"           / keyword
-man ".z"              / namespace
-man "-b"              / command-line option
+man ".Q"              / namespace
+man ".Q.bt"           / namespace object
+man "-C"              / command-line option
 man "\\b"             / system command
 man ""                / reference card
 
@@ -36,7 +24,7 @@ man "kb"              / Knowledge Base
 man "syscmds"         / system commands
 man "wp"              / White Papers
 
-All arguments to man:
+Help:
 
 man "--help"
 man "--list"

@@ -1,33 +1,34 @@
 \,abort
-\a,tables
-\b,views
-\B,pending views
-\c,console size
-\c,change directory
-\C,HTTP size
-\d,directory
-\e,error trap clients
-\f,functions
-\g,garbage collection mode
-\l,load file or directory
-\o,offset from UTC
-\p,listening port
-\P,precision
-\r,replication master
-\r,rename
-\s,number of slaves
-\S,random seed
-\t,timer
-\T,timeout
-\t,time and space
-\u,reload user password file
-\v,variables
-\w,workspace
-\W,week offset
-\x,expunge
-\z,date parsing
-\1 & \2,redirect
-\_,hide q code
+\a,a-tables
+\b,b-views
+\B,b-pending-views
+\c,c-console-size
+\c,c-change-directory
+\C,c-http-size
+\d,d-directory
+\e,e-error-trap-clients
+\f,f-functions
+\g,g-garbage-collection-mode
+\l,l-load-file-or-directory
+\o,o-offset-from-utc
+\p,p-listening-port
+\P,p-precision
+\r,r-replication-master
+\r,r-rename
+\s,s-number-of-slaves
+\S,s-random-seed
+\t,t-timer
+\T,t-timeout
+\t,t-time-and-space
+\u,u-reload-user-password-file
+\v,v-variables
+\w,w-workspace
+\W,w-week-offset
+\x,x-expunge
+\z,z-date-parsing
+\1,1-2-redirect
+\2,1-2-redirect
+\_,_-hide-q-code
 \,terminate
-\,toggle q/k
+\,toggle-qk
 \\,quit
