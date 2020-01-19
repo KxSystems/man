@@ -1,4 +1,4 @@
-/ man.q 2019.12.30
+/ man.q 2020.01.19
 / constants 
 .man.GS:"https://google.com/search?q=site:code.kx.com+"     / Google Search
 .man.ROOT:"https://code.kx.com/q/"                          / documentation site
@@ -22,9 +22,10 @@
   retry:(rtf where 1 2 1)cs?first str;                      / retry fn
   url:$[count u:.man.d str; .man.ROOT,u;                    / OK
         count u:retry str;  .man.ROOT,u;                    /   retry
-                            .man.GS,str ];                  /   Google
+                            .man.GS,?[str=" ";"+";str] ];   /   Google
   cmd:"mwlsv"!("open";"start";"xdg-open")where 1 1 3;       / OS command
-  if[not .man.TEST;system(cmd first string .z.o)," ",url];  / in browser
+  if[not .man.TEST;
+    system(cmd first string .z.o)," \"",url,"\""];          / in browser
   url }
 
 .man.cases:(
