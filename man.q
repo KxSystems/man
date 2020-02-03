@@ -1,4 +1,4 @@
-/ man.q 2020.01.19
+/ man.q 2020.02.03
 / constants 
 .man.GS:"https://google.com/search?q=site:code.kx.com+"     / Google Search
 .man.ROOT:"https://code.kx.com/q/"                          / documentation site
@@ -18,7 +18,7 @@
     :""];
   cs:".\\-";                                                / ns, cmd, cmd-line
   str:$[first[str]in cs;str;lower str];                     / case sensitive?
-  rtf:(.man.d lower 2#;.man.d .man.rc;0#);                  / retry fns
+  rtf:({.man.d @[x;1;upper]};{.man.d .man.rc x};0#);        / retry fns
   retry:(rtf where 1 2 1)cs?first str;                      / retry fn
   url:$[count u:.man.d str; .man.ROOT,u;                    / OK
         count u:retry str;  .man.ROOT,u;                    /   retry
@@ -33,14 +33,14 @@
   ("Enum Extend" ; "ref/enum-extend/");
   ("read0"       ; "ref/read0");
   (".Q"          ; "ref/dotq");
-  (".Q.bt"       ; "ref/dotq/#qbt-backtrace");
+  (".q.bt"       ; "ref/dotq/#qbt-backtrace");
   (".h.br"       ; "ref/doth/#hbr-linebreak");
   (".j.j"        ; "ref/dotj/#jj-serialize");
   (".z.u"        ; "ref/dotz/#zu-user-id");
   (".z.T"        ; "ref/dotz/#zt-zt-zd-zd-timedate-shortcuts");
   (".z.Z"        ; "ref/dotz/#zz-local-datetime");
   ("-C"          ; "basics/cmdline/#-c-http-size");
-  ("\\b"         ; "basics/syscmds/#b-views");
+  ("\\V"         ; "basics/syscmds/#v-variables");
   (""            ; "ref/");
   ("cmdline"     ; "basics/cmdline");
   ("error"       ; "basics/errors/");
@@ -187,8 +187,8 @@ man:.man.man
   ".h.hb,hhb-anchor-target";
   ".h.hc,hhc-escape-lt";
   ".h.he,hhe-http-400";
-  ".h.hn,hhn-http-error";
-  ".h.hp,hhp-http-response";
+  ".h.hn,hhn-http-response";
+  ".h.hp,hhp-http-pre";
   ".h.hr,hhr-horizontal-rule";
   ".h.ht,hht-marqdown-to-html";
   ".h.hta,hhta-start-tag";
@@ -198,17 +198,17 @@ man:.man.man
   ".h.http,hhttp-hyperlinks";
   ".h.hu,hhu-uri-escape";
   ".h.hug,hhug-uri-map";
-  ".h.hy,hhy-http-response";
+  ".h.hy,hhy-http-response-content";
   ".h.HOME,hhome-webserver-root";
   ".h.iso8601,hiso8601-iso-timestamp";
   ".h.jx,hjx-table";
   ".h.logo,hlogo-kx-logo";
   ".h.nbr,hnbr-no-break";
   ".h.pre,hpre-pre";
-  ".h.sa,hsa-style";
-  ".h.sb,hsb-style";
+  ".h.sa,hsa-anchor-style";
+  ".h.sb,hsb-body-style";
   ".h.sc,hsc-uri-safe";
-  ".h.td,htd-tsv";
+  ".h.td,htd-tsv-from-data";
   ".h.text,htext-paragraphs";
   ".h.tx,htx-filetypes";
   ".h.ty,hty-mime-types";
@@ -262,8 +262,8 @@ man:.man.man
   ".Q.ind,qind-partitioned-index";
   ".Q.j10,qj10-encode-binhex";
   ".Q.x10,qx10-decode-binhex";
-  ".Q.j12,qj12-encode-base64";
-  ".Q.x12,qx12-decode-base64";
+  ".Q.j12,qj12-encode-base-36";
+  ".Q.x12,qx12-decode-base-36";
   ".Q.k,qk-version";
   ".Q.l,ql-load";
   ".Q.M,qm-long-infinity";

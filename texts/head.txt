@@ -17,7 +17,7 @@
     :""];
   cs:".\\-";                                                / ns, cmd, cmd-line
   str:$[first[str]in cs;str;lower str];                     / case sensitive?
-  rtf:(.man.d lower 2#;.man.d .man.rc;0#);                  / retry fns
+  rtf:({.man.d @[x;1;upper]};{.man.d .man.rc x};0#);        / retry fns
   retry:(rtf where 1 2 1)cs?first str;                      / retry fn
   url:$[count u:.man.d str; .man.ROOT,u;                    / OK
         count u:retry str;  .man.ROOT,u;                    /   retry
@@ -32,14 +32,14 @@
   ("Enum Extend" ; "ref/enum-extend/");
   ("read0"       ; "ref/read0");
   (".Q"          ; "ref/dotq");
-  (".Q.bt"       ; "ref/dotq/#qbt-backtrace");
+  (".q.bt"       ; "ref/dotq/#qbt-backtrace");
   (".h.br"       ; "ref/doth/#hbr-linebreak");
   (".j.j"        ; "ref/dotj/#jj-serialize");
   (".z.u"        ; "ref/dotz/#zu-user-id");
   (".z.T"        ; "ref/dotz/#zt-zt-zd-zd-timedate-shortcuts");
   (".z.Z"        ; "ref/dotz/#zz-local-datetime");
   ("-C"          ; "basics/cmdline/#-c-http-size");
-  ("\\b"         ; "basics/syscmds/#b-views");
+  ("\\V"         ; "basics/syscmds/#v-variables");
   (""            ; "ref/");
   ("cmdline"     ; "basics/cmdline");
   ("error"       ; "basics/errors/");

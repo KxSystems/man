@@ -33,8 +33,8 @@
 .Q.ind,qind-partitioned-index
 .Q.j10,qj10-encode-binhex
 .Q.x10,qx10-decode-binhex
-.Q.j12,qj12-encode-base64
-.Q.x12,qx12-decode-base64
+.Q.j12,qj12-encode-base-36
+.Q.x12,qx12-decode-base-36
 .Q.k,qk-version
 .Q.l,ql-load
 .Q.M,qm-long-infinity
