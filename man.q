@@ -75,7 +75,7 @@ man:.man.man
   "'   ref/overloads/#quote";
   "':  ref/overloads/#quotecolon";
   "/   ref/overloads/#slash";
-  "_   ref/overloads/#underscore";
+  "_   ref/overloads/#_-underscore";
   "+   ref/add";
   "-   ref/subtract";
   "*   ref/multiply";
