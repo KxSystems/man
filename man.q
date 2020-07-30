@@ -1,4 +1,4 @@
-/ man.q 2020.02.03
+/ man.q 2020.07.30
 / constants 
 .man.GS:"https://google.com/search?q=site:code.kx.com+"     / Google Search
 .man.ROOT:"https://code.kx.com/q/"                          / documentation site
@@ -23,7 +23,8 @@
   url:$[count u:.man.d str; .man.ROOT,u;                    / OK
         count u:retry str;  .man.ROOT,u;                    /   retry
                             .man.GS,?[str=" ";"+";str] ];   /   Google
-  cmd:"mwlsv"!("open";"start";"xdg-open")where 1 1 3;       / OS command
+  cmd:"mwlsv"!
+    ("open";"powershell start";"xdg-open")where 1 1 3;      / OS command
   if[not .man.TEST;
     system(cmd first string .z.o)," \"",url,"\""];          / in browser
   url }
