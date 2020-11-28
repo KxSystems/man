@@ -51,7 +51,8 @@
   ("interfaces"  ; "interfaces");
   ("internal"    ; "basics/internal");
   ("iterators"   ; "ref/iterators");
-  ("kb"          ; "kb");
+  ("db"          ; "database");
+  ("database"    ; "database");
   ("syscmds"     ; "basics/syscmds");
   ("wp"          ; "wp");
   ("--help"      ; "about/man") )
@@ -427,7 +428,8 @@ man:.man.man
   "interfaces interfaces";
   "iterators  ref/iterators";
   "joins      basics/joins";
-  "kb         kb";
+  "db         database";
+  "database   database";
   "syscmds    basics/syscmds";
   "wp         wp")
 \
